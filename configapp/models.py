@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Category(models.Model):
+    objects = None
     category_name = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
     picture = models.ImageField(upload_to='category_pics/', blank=True, null=True)
@@ -11,6 +12,7 @@ class Category(models.Model):
 
 
 class Supplier(models.Model):
+    objects = None
     company_name = models.CharField(max_length=200)
     contact_name = models.CharField(max_length=200, blank=True, null=True)
     contact_title = models.CharField(max_length=200, blank=True, null=True)
@@ -28,6 +30,7 @@ class Supplier(models.Model):
 
 
 class Product(models.Model):
+    objects = None
     product_name = models.CharField(max_length=200)
     supplier = models.ForeignKey(Supplier, related_name='products', on_delete=models.SET_NULL, blank=True, null=True)
     category = models.ForeignKey(Category, related_name='products', on_delete=models.SET_NULL, blank=True, null=True)
